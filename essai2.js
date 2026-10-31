@@ -17,3 +17,23 @@ export function moyenneHumidite(releves) {
 
   return Math.round(total / releves.length);
 }
+// 3. Déterminer l'état d'irrigation
+export function etatIrrigation(humidite, culture) {
+  if (
+    humidite === null ||
+    humidite === undefined ||
+    !culture
+  ) {
+    return "INCONNU";
+  }
+
+  if (humidite < culture.humiditeMin) {
+    return "ARROSER";
+  }
+
+  if (humidite > culture.humiditeMax) {
+    return "DRAINER";
+  }
+
+  return "OK";
+}
